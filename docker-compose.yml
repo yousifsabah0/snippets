@@ -1,0 +1,21 @@
+services:
+  snippets-db:
+    image: mysql:9.3.0
+    container_name: "snippets-db"
+
+    restart: unless-stopped
+    environment:
+      MYSQL_USER: "odyssey"
+      MYSQL_PASSWORD: "odyssey"
+
+      MYSQL_DATABASE: snippets
+      MYSQL_ROOT_PASSWORD: "root"
+
+    ports:
+      - "3306:3306"
+    volumes:
+      - snippets-db-data:/var/lib/mysql
+
+volumes:
+  snippets-db-data:
+    driver: local
