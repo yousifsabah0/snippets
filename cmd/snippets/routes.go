@@ -13,6 +13,8 @@ func (app *application) routes() http.Handler {
 	middleware := alice.New(app.panicRecovery, app.logRequest, headers)
 	dynamic := alice.New(app.session.LoadAndSave, noSurf, app.authenticate)
 
+	mux.HandleFunc("GET /ping", app.ping)
+
 	mux.Handle("GET /{$}", dynamic.ThenFunc(app.home))
 	mux.Handle("GET /snippets/view/{id}", dynamic.ThenFunc(app.snippetView))
 

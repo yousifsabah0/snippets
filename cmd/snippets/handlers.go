@@ -10,7 +10,7 @@ import (
 	"github.com/yousifsabah0/snippets/internal/validators"
 )
 
-func ping(w http.ResponseWriter, r *http.Request) {
+func (app *application) ping(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("pong"))
 }
 
